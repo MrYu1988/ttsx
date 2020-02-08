@@ -1,5 +1,8 @@
 from django.conf.urls import include, url
+from order.views import OrderPlaceView,OrderCommitView
 
 urlpatterns = [
-    url(r'^', include('goods.urls', namespace='goods')),
+    url(r'^place$', OrderPlaceView.as_view(), name='place'),
+    url(r'^commit$', OrderCommitView.as_view(), name='commit'),
+
 ]

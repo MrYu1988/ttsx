@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'tinymce', #符文本模板
     'user',
     'goods',
@@ -154,4 +155,16 @@ FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
 
 #设置fdfs存储服务器上到nginx的IP和端口号
 FDFS_URL= 'http://192.168.100.7:8888/'
+
+HAYSTACK_CONNECTIONS = {
+    'default':{
+        'ENGINE':'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH':os.path.join(BASE_DIR,'whoosh_index'),
+    }
+}
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+#指定搜索每页显示条数
+HASSTACK_SEARCH_RESULT_PER_PAGE=1
 

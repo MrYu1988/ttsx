@@ -129,3 +129,29 @@ EMAIL_HOST_USER = 'xiaokedou_2020@163.com'
 EMAIL_HOST_PASSWORD = '13834694990y'
 
 EMAIL_FROM = 'ake<xiaokedou_2020@163.com>'
+
+CACHES = {
+    "default":{
+        "BACKEND":"django_redis.cache.RedisCache",
+        "LOCATION":"redis://127.0.0.1:6379/1",
+        "OPTIONS":{
+            "CLIENT_CLASS":"django_redis.client.DefaultClient",
+        }
+    }
+}
+#配置session存储
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+#配置登录url地址
+LOGIN_URL = "/user/login"
+
+#设置django文件存储类
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
+
+#设置fdfs使用到client.con路径
+FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
+
+#设置fdfs存储服务器上到nginx的IP和端口号
+FDFS_URL= 'http://192.168.100.7:8888/'
+
